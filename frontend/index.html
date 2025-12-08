@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+<body>
+<h1>Library</h1>
+
+<form id="bookForm">
+    <div>
+<label for="bookTitleInput">Book Title</label>
+<input type="text" id="bookTitleInput" name="bookTitleInput">
+    </div>
+    <div>
+    <label for="bookAuthorInput">Book Author</label>
+    <input type="text" id="bookAuthorInput" name="bookAuthorInput">
+</div>
+
+<div>
+<label for="bookGenreInput">Genre</label>
+<select id="bookGenreInput">
+   <option value="adventure">adventure</option>
+   <option value="fantasy">fantasy</option>    
+   <option value="drama">drama</option>
+    <option value="comedy">comedy</option>s
+</select>
+
+<button type="submit" id="createRecord">Create</button>
+<button type="button" id="updateRecord">Update</button>
+</div>
+</form>
+    <script src="index.js"></script>
+</body>
+</html>
