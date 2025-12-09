@@ -7,4 +7,5 @@ const connection = mysql.createConnection({
   database: "kab212_1_databasename",
 });
 
+
 module.exports = connection;

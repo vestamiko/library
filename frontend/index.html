@@ -1,36 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-</head>
-<body>
-<h1>Library</h1>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Library</h1>
 
-<form id="bookForm">
-    <div>
-<label for="bookTitleInput">Book Title</label>
-<input type="text" id="bookTitleInput" name="bookTitleInput">
+    <form id="bookForm">
+      <div>
+        <label for="bookTitleInput">Book Title</label>
+        <input
+          type="text"
+          id="bookTitleInput"
+          name="bookTitleInput"
+          placeholder="pvz: Haris Poteris"
+          required
+        />
+      </div>
+      <div>
+        <label for="bookAuthorInput">Book Author</label>
+        <input
+          type="text"
+          id="bookAuthorInput"
+          name="bookAuthorInput"
+          placeholder="pvz: J.K. Rowling"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="bookGenreInput">Genre</label>
+        <select id="bookGenreInput" required>
+          <option value="adventure">adventure</option>
+          <option value="fantasy">fantasy</option>
+          <option value="drama">drama</option>
+          <option value="comedy">comedy</option>
+          <option value="horror">horror</option>
+        </select>
+
+        <button type="button" id="createBooks">Create</button>
+        <button type="button" id="updateBooks">Update</button>
+        <button type="button" id="deleteBooks">Delete</button>
+      </div>
+    </form>
+    <div id="conteiner">
+      <table id="myTable" border="1">
+        <thead>
+          <tr>
+            <th>Eil.nr</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>-----</th>
+          </tr>
+        </thead>
+
+        <tbody id="tableBody"></tbody>
+      </table>
     </div>
-    <div>
-    <label for="bookAuthorInput">Book Author</label>
-    <input type="text" id="bookAuthorInput" name="bookAuthorInput">
-</div>
-
-<div>
-<label for="bookGenreInput">Genre</label>
-<select id="bookGenreInput">
-   <option value="adventure">adventure</option>
-   <option value="fantasy">fantasy</option>    
-   <option value="drama">drama</option>
-    <option value="comedy">comedy</option>s
-</select>
-
-<button type="submit" id="createRecord">Create</button>
-<button type="button" id="updateRecord">Update</button>
-</div>
-</form>
+    <h2 id="message"></h2>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
