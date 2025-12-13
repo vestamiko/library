@@ -16,6 +16,19 @@ connection.connect((err) => {
   }
 });
 
+/////
+app.get("/books", (req, res) => {
+  let sql = `SELECT * FROM books`;
+
+  connection.query(sql, (err, result) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+    res.json(result);
+  });
+});
+
+
 //////////
 /// POST / books
 // insert into table_name (column1, column2...)
@@ -38,7 +51,7 @@ app.post("/books", (req, res) => {
     genre: req.body.genre,
   };
 
-  let sql = `INSERT INTO library
+  let sql = `INSERT INTO books
     (title, author, genre)
     VALUES (
     ?, ?, ?
@@ -65,7 +78,7 @@ app.post("/books", (req, res) => {
 /// SELECT * FROM table_name;
 
 app.get("/books/all", (req, res) => {
-  let sql = `SELECT * FROM library`;
+  let sql = `SELECT * FROM books`;
 
   connection.query(sql, (err, result) => {
     if (err) {
@@ -83,7 +96,7 @@ app.get("/books/all", (req, res) => {
 app.get("/books/:id", (req, res) => {
   let sql = `
     SELECT *
-    FROM library
+    FROM books
     WHERE id = ?;`;
 
   connection.query(sql, [req.params.id], (err, result) => {
@@ -105,7 +118,7 @@ app.get("/books/:id", (req, res) => {
 /// WHERE condition;
 
 app.delete("/books/:id", (req, res) => {
-  let sql = `DELETE FROM library
+  let sql = `DELETE FROM books
     WHERE id = ?;`;
 
   connection.query(sql, [req.params.id], (err, result) => {
@@ -129,7 +142,7 @@ app.delete("/books/:id", (req, res) => {
 /// WHERE condition;
 
 app.put("/books/:id", (req, res) => {
-  let sql = `UPDATE library
+  let sql = `UPDATE books
     SET title = ?, author = ?, genre = ?
     WHERE id = ?;`;
 
@@ -138,7 +151,7 @@ app.put("/books/:id", (req, res) => {
     [req.body.title, req.body.author, req.body.genre, req.params.id],
     (err, result) => {
         
-      const getFromDB = `SELECT * FROM library WHERE id = ?;`;
+      const getFromDB = `SELECT * FROM books WHERE id = ?;`;
 
       connection.query(getFromDB, [req.params.id], (err, updatedResult) => {
         res.json({
@@ -152,6 +165,6 @@ app.put("/books/:id", (req, res) => {
 
 //////////
 
-app.listen(port, () => {
+app.listen(8000, () => {
   console.log(`Server is running on port ${port}`);
 });
